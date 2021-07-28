@@ -11,8 +11,8 @@
     - DOM manipulation
     - CSS-> animation-play-state Property
     - audio tags -> audio.play(),audio. pause(),audio.currentTime,audio.duration
-    -qurey selectors (ECMAScript)
-    -string literals (``)
+    - Qurey selectors (ECMAScript)
+    - String literals (``)
 
 ## Approach
 
