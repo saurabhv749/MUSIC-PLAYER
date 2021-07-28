@@ -24,4 +24,4 @@
 
 ## Preview
 
-![https://drive.google.com/uc?id=1PW08ZHtEQT0sOFPwt_pHt3ucRr41jW3E](js-music-player)
+[https://drive.google.com/uc?id=1PW08ZHtEQT0sOFPwt_pHt3ucRr41jW3E](js-music-player)
