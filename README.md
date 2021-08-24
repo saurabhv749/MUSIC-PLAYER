@@ -18,10 +18,8 @@
 
     HTML has the initial setup for first file and rest is handled by JS using click events
 
-## what you can add ?
 
-    A suffle button 😀
 
 ## Preview
 
-![js-music-player](js-music-playerhttps://drive.google.com/uc?id=1PW08ZHtEQT0sOFPwt_pHt3ucRr41jW3E)
+![js-music-player](https://drive.google.com/uc?id=1PW08ZHtEQT0sOFPwt_pHt3ucRr41jW3E)
