@@ -10,12 +10,13 @@ const bar = document.querySelector('#bar')
 const playBtn = document.querySelector('#play')
 const nextBtn = document.querySelector('#next')
 const prevBtn = document.querySelector('#prev')
+const shuffleBtn = document.querySelector('#shuffle')
 
 /********************************************** */
 //          Variables and constants
 /********************************************** */
 /** all files you only have to change the extension using js **/
-const media = [
+const orgMedia = [
   'August Diaries',
   'Conkarah',
   'Blood In The Water',
@@ -34,8 +35,13 @@ const media = [
   'TKN',
 ]
 
+let media = [...orgMedia]
+
+
+
 let index = 0,
-  isPlaying = false
+  isPlaying = false,
+  isShuffle  = false
 
 /********************************************** */
 //          Functions
@@ -80,6 +86,29 @@ function prevSong() {
   playPause()
 }
 
+function shuffleSong() {
+  playPause()
+  let temp = []
+  while(temp.length <= orgMedia.length){
+    let ind = Math.floor(Math.random() * orgMedia.length)
+      temp.push(orgMedia[ind])
+  }
+  
+  media = isShuffle ? [...orgMedia] : temp
+  isShuffle = !isShuffle
+  shuffleBtn.style.color = isShuffle ? '#f5b041' : '#7e8c96'
+
+  if (index === 0) {
+    index = media.length - 1
+  } else {
+    index--
+  }
+  audio.src = `./songs/${media[index]}.mp3`
+  cover.src = `./covers/${media[index]}.jpg`
+  track.innerHTML = media[index]
+  playPause()
+}
+
 function updateTime(e) {
   audio.currentTime = (audio.duration * e.target.value) / 100
 }
@@ -95,5 +124,6 @@ setInterval(() => {
 playBtn.addEventListener('click', playPause)
 nextBtn.addEventListener('click', nextSong)
 prevBtn.addEventListener('click', prevSong)
+shuffleBtn.addEventListener('click', shuffleSong)
 audio.addEventListener('ended', nextSong)
 bar.addEventListener('click', updateTime)
