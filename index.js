@@ -2,15 +2,18 @@
 //                CONTEXTS/references
 /********************************************** */
 
-const playerContainer = document.querySelector('.info')
-const audio = document.querySelector('#audio')
-const cover = document.querySelector('#cover')
-const track = document.querySelector('#track')
-const bar = document.querySelector('#bar')
-const playBtn = document.querySelector('#play')
-const nextBtn = document.querySelector('#next')
-const prevBtn = document.querySelector('#prev')
-const shuffleBtn = document.querySelector('#shuffle')
+const playerContainer = document.querySelector('.info'),
+audio = document.querySelector('#audio'),
+cover = document.querySelector('#cover'),
+track = document.querySelector('#track'),
+bar = document.querySelector('#bar'),
+playBtn = document.querySelector('#play'),
+nextBtn = document.querySelector('#next'),
+prevBtn = document.querySelector('#prev'),
+shuffleBtn = document.querySelector('#shuffle'),
+vol = document.querySelector('#vol'),
+volSlider = document.querySelector('#vol-slider')
+
 
 /********************************************** */
 //          Variables and constants
@@ -37,25 +40,28 @@ const orgMedia = [
 
 let media = [...orgMedia]
 
-
-
 let index = 0,
   isPlaying = false,
-  isShuffle  = false
+  isShuffle  = false,
+  isMuted = false,
+  currentVolume = volSlider.value
 
-/********************************************** */
+  /********************************************** */
 //          Functions
 /********************************************** */
 
 function playPause() {
+  updateVolume()
   if (isPlaying) {
     audio.pause()
     isPlaying = false
+    document.body.style.animationPlayState = 'paused'
     playBtn.classList.replace('bi-pause-circle', 'bi-play-circle')
     cover.style.animationPlayState = 'paused'
   } else {
     audio.play()
     isPlaying = true
+    document.body.style.animationPlayState = 'running'
     playBtn.classList.replace('bi-play-circle', 'bi-pause-circle')
     cover.style.animationPlayState = 'running'
   }
@@ -112,6 +118,35 @@ function shuffleSong() {
 function updateTime(e) {
   audio.currentTime = (audio.duration * e.target.value) / 100
 }
+
+function showVolPanel(e){
+  volSlider.style.display = 'block'
+}
+function hideVolPanel(e){
+  setTimeout(() => {
+    volSlider.style.display = 'none'
+  }, 1000);
+}
+
+function updateVolume(e) {
+  audio.volume = volSlider.value/100
+}
+
+function muteUnmute(e){
+  if(!isMuted){
+    currentVolume = volSlider.value
+    audio.volume = 0
+    vol.classList.replace('bi-volume-up','bi-volume-mute')
+    volSlider.value = 0
+  }else{
+    audio.volume = currentVolume/100
+    volSlider.value = currentVolume
+    vol.classList.replace('bi-volume-mute','bi-volume-up')
+  
+  }
+  isMuted = !isMuted
+}
+
 /** to keep updating the progressBar every second (1000ms) */
 setInterval(() => {
   bar.value = (100 * audio.currentTime) / audio.duration
@@ -120,10 +155,13 @@ setInterval(() => {
 /********************************************** */
 //          Event Listeners
 /********************************************** */
-
 playBtn.addEventListener('click', playPause)
 nextBtn.addEventListener('click', nextSong)
 prevBtn.addEventListener('click', prevSong)
 shuffleBtn.addEventListener('click', shuffleSong)
 audio.addEventListener('ended', nextSong)
 bar.addEventListener('click', updateTime)
+vol.addEventListener('mouseenter',showVolPanel)
+volSlider.addEventListener('mouseleave',hideVolPanel)
+vol.addEventListener('click',muteUnmute)
+volSlider.addEventListener('click',updateVolume)
