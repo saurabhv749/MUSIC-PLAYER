@@ -5,8 +5,10 @@
   font-family: 'JetBrains Mono';
 }
 body {
-  background: radial-gradient(circle, rgb(157, 157, 241) 10%, red 90%);
+  background: radial-gradient(circle, rgb(9, 151, 194) 10%, rgb(207, 24, 85) 90%);
+  transition: background 5s;
 }
+
 h1 {
   color: white;
   margin: 1rem;
@@ -50,7 +52,7 @@ img {
   left: 50%;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  background-color: #7e8c96;
+  background-color: #5ebafb;
   border: 1px solid rgb(114, 105, 105);
 }
 
@@ -81,4 +83,16 @@ button:hover {
 }
 input {
   width: 90%;
+}
+#shuffle{
+  color: #7e8c96;
+}
+
+#vol{
+  font-size: 2rem;
+}
+
+#vol-slider{
+   display: none;
+   cursor: pointer;
 }
