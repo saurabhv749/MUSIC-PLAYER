@@ -12,13 +12,11 @@
     - CSS-> animation-play-state Property
     - audio tags -> audio.play(),audio. pause(),audio.currentTime,audio.duration
     - Qurey selectors (ECMAScript)
-    - String literals (``)
+    - EventListeners
 
 ## Approach
 
     HTML has the initial setup for first file and rest is handled by JS using click events
-
-
 
 ## Preview
 
