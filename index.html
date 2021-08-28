@@ -16,39 +16,52 @@
       referrerpolicy="no-referrer"
     />
     <!--   stylesheet  -->
-
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <h1>Jet Audio</h1>
-    <div class="player-container">
-      <div class="info">
-        <audio id="audio" src="./songs/August Diaries.mp3"></audio>
-        <h4 id="track">August Dieries</h4>
-        <div class="circle">
-          <img id="cover" src="./covers/August Diaries.jpg" />
-        </div>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Jet Audio</h1>
+  <div class="player-container">
+    <div class="info">
+      <audio id="audio" src="./songs/August Diaries.mp3"></audio>
+      <h4 id="track">August Dieries</h4>
+      <div class="circle">
+        <img id="cover" src="./covers/August Diaries.jpg" />
       </div>
-      <div class="controls">
-        <div class="progress">
-          <input type="range" id="bar" value="0" />
-        </div>
-        <div class="btns">
-          <button title="previous song">
-            <i id="prev" class="bi bi-skip-backward"></i>
-          </button>
-          <button title="play pause music">
-            <i id="play" class="bi bi-play-circle"></i>
-          </button>
-          <button title="next song">
-            <i id="next" class="bi bi-skip-forward"></i>
-          </button>
-        </div>
+    </div>
+    <div class="controls">
+      <div class="progress">
+        <input type="range" id="bar" value="0" />
+      </div>
+      <div class="btns">
+        <button title="previous song">
+          <i id="prev" class="bi bi-skip-backward"></i>
+        </button>
+        <button title="play pause music">
+          <i id="play" class="bi bi-play-circle"></i>
+        </button>
+        <button title="next song">
+          <i id="next" class="bi bi-skip-forward"></i>
+        </button>
+        <button title="suffle song">
+          <i id="shuffle" class="bi bi-shuffle"></i>
+        </button>
+        
+        <button id="volume">
+          <i id="vol" class="bi bi-volume-up"></i>
+        </button>
       </div>
     </div>
 
-    <!--    Script inserted here  -->
 
-    <script src="index.js"></script>
-  </body>
+    <span>
+      <input id="vol-slider" hi type="range" min="0" max="100" value="30"></input >
+    </span>
+    
+  </div>
+  <script src="index.js"></script>
+</body>
 </html>
